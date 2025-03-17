@@ -7,10 +7,10 @@ export async function GET({params}: { params: Promise<{ id: string }> }) {
         const prismaClient = new PrismaClient();
         const user = await prismaClient.users.findUnique({where: {id: +id}})
         prismaClient.$disconnect()
-        if (!user) return NextResponse.json({error: 'User not found', status: 404});
-        return NextResponse.json({user, status: 200})
+        if (!user) return NextResponse.json({error: 'User not found'}, {status: 404});
+        return NextResponse.json({user}, {status: 200})
     } catch (err) {
-        return NextResponse.json({error: err, status: 401});
+        return NextResponse.json({error: err}, {status: 401});
     }
 
 }
@@ -22,8 +22,8 @@ export async function PUT(req: NextRequest, {params}: { params: Promise<{ id: st
         const prismaClient = new PrismaClient();
         const updatedUser = await prismaClient.users.update({where: {id: +id}, data: data});
         prismaClient.$disconnect()
-        return NextResponse.json({updatedUser, status: 200})
+        return NextResponse.json({updatedUser}, {status: 200})
     } catch (err) {
-        return NextResponse.json({error: err, status: 401});
+        return NextResponse.json({error: err}, {status: 401});
     }
 }
