@@ -13,21 +13,23 @@ export default async function Home() {
     });
     if(error) return <div className={"bg-amber-700 text-white"}>Oops! Something went wrong! Try refreshing...</div>
     return (
-        <div className={"flex flex-col justify-center items-center min-h-96"}>
-            <Card className={"bg-slate-600 text-white rounded-lg shadow-sm w-2/3 py-8 border-0"}>
+        <div className={"flex flex-col justify-center items-center min-h-96 py-10"}>
+            <Card className={"bg-slate-600 text-white rounded-lg shadow-sm w-5/6 py-8 border-0 overflow-clip"}>
                 <CardHeader>
                     <CardTitle>Welcome, Admin!</CardTitle>
                     <CardDescription className={"text-white"}>You have {users.length} active users!</CardDescription>
                 </CardHeader>
-                <CardContent className={"flex gap-8 max-h-40 items-center overflow-x-scroll snap-center"}>
+                <CardContent className={"max-h-96 items-center overflow-x-scroll w-full"}>
+                    <div className={"grid grid-rows-3 grid-flow-col m-auto "}>
                     {(users as User[]).slice(0, 50).map((user) => (
-                        <Avatar key={user.id} className={"w-18 h-18 rounded-full"}>
+                        <Avatar key={user.id} className={"w-18 h-18 rounded-full m-3"}>
                             <AvatarImage src={`https://i.pravatar.cc/150?u=${user.email}`}/>
                             <AvatarFallback>{user.first_name.at(0)??"" + user.last_name?.at(0)}</AvatarFallback>
                         </Avatar>
                     ))}
+                    </div>
                 </CardContent>
-                <CardFooter className={"flex gap-2 sm:gap-8"}>
+                <CardFooter className={"flex gap-2 sm:gap-8 w-full justify-center"}>
                     <Link href="/">
                         <Button variant="outline" size="default" className={"text-black cursor-pointer hover:bg-slate-300"}>
                             Add User
