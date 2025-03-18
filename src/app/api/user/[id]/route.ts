@@ -2,7 +2,7 @@ import {PrismaClient, Prisma} from "@prisma/client";
 import {NextRequest, NextResponse} from "next/server";
 import bcrypt from "bcryptjs";
 
-export async function GET({params}: { params: Promise<{ id: string }> }) {
+export async function GET(_req: Request, {params}: { params: Promise<{ id: string }> }) {
     try {
         const {id} = await params;
         const prismaClient = new PrismaClient();
