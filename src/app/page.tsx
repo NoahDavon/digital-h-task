@@ -1,8 +1,8 @@
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "../components/ui/card";
-import {Avatar, AvatarFallback, AvatarImage} from "../components/ui/avatar";
-import {User} from "../app/types";
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
+import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
+import {User} from "@/app/types";
 import Link from "next/link";
-import {Button} from "../components/ui/button";
+import {Button} from "@/components/ui/button";
 
 export default async function Home() {
     const {users, error}: { users: User[], error: string } = await fetch(process.env.URL + "/api/user").then(res => {

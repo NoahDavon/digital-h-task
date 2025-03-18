@@ -4,10 +4,10 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
     navigationMenuTriggerStyle
-} from "../../components/ui/navigation-menu";
-import {Card, CardContent} from "../../components/ui/card";
-import {Avatar, AvatarFallback, AvatarImage} from "../../components/ui/avatar";
-import {User} from "../../app/types";
+} from "@/components/ui/navigation-menu";
+import {Card, CardContent} from "@/components/ui/card";
+import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
+import {User} from "@/app/types";
 
 export default async function Users() {
     const {users, error}: { users: User[], error: string } = await fetch(process.env.URL + "/api/user").then(res => {
